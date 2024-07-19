@@ -67,3 +67,4 @@ def check_letter(char=""):
     print("Do you want to play again?")
 
 
+check_letter()
