@@ -1,13 +1,19 @@
+from menu import menu
+import random
+
+
 def check_letter(char=""):
-    answer = "dinosaur"
+
+    answer = menu()
     placeholder = ["_" if char.isalpha() else char for char in answer]  # Add underscore placeholder for unknown letter
     wrong_guess = 0  # Wrong attempts counter
     entered_letters = set()  # Store already entered letters
 
     print("Answer:", " ".join(placeholder))
+    correct_word = len(answer)
 
     while True:
-        letter = input("Please enter a letter\n").lower()
+        letter = input("Please enter a letter\n")  # .lower()
         if len(letter) != 1:  # Check if the input is a single letter
             print("Invalid input. Please enter only one letter.")
             continue
@@ -20,7 +26,7 @@ def check_letter(char=""):
                 entered_letters.add(letter)
 
             for index, char in enumerate(answer):
-                if char == letter:
+                if char == letter.upper() or char == letter.lower():
                     placeholder[index] = letter
 
             print("Answer:", " ".join(placeholder))
@@ -64,7 +70,16 @@ def check_letter(char=""):
                                     print("Sorry, you lost. The correct answer was: " + answer)
                                     break
 
-    print("Do you want to play again?")
+    while True:
+        replay = input("Do you want to play again?\n1. Yes\n2. No\n")
+        if replay == "1":
+            check_letter()
+            break
+        elif replay == "2":
+            print("Good bye.")
+            break
+        else:
+            print("Invalid input. Please choose 1 or 2.")
 
 
 check_letter()
