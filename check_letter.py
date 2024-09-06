@@ -13,7 +13,7 @@ def check_letter(char=""):
     correct_word = len(answer)
 
     while True:
-        letter = input("Please enter a letter\n")  # .lower()
+        letter = input("\nPlease enter a letter\n")
         if len(letter) != 1:  # Check if the input is a single letter
             print("Invalid input. Please enter only one letter.")
             continue
@@ -21,9 +21,11 @@ def check_letter(char=""):
         if letter in answer:
             if letter in entered_letters:
                 print("You have already entered this letter. Try a different one.\n")
+                # continue
             else:
                 print("You have guessed correctly!\n")
                 entered_letters.add(letter)
+                print("Letters already entered: " + str(entered_letters) + "\n\n")
 
             for index, char in enumerate(answer):
                 if char == letter.upper() or char == letter.lower():
@@ -35,39 +37,56 @@ def check_letter(char=""):
             wrong_guess += 1
 
             if wrong_guess == 1:
+                entered_letters.add(letter)
                 print("/\n")
                 print("Try again.\n")
-                print("Correct word:", " ".join(placeholder )+ "\n")
+                print("Correct word:", " ".join(placeholder) + "\n")
+                print("Letters already entered: " + str(entered_letters))
 
             else:
                 if wrong_guess == 2:
+                    entered_letters.add(letter)
                     print("/ \\\n")
                     print("Try again.\n")
                     print("Correct word:", " ".join(placeholder))
+                    print("Letters already entered: " + str(entered_letters))
+
                 else:
                     if wrong_guess == 3:
+                        entered_letters.add(letter)
                         print(" |")
                         print("/ \\\n")
                         print("Try again.\n")
                         print("Correct word:", " ".join(placeholder))
+                        print("Letters already entered: " + str(entered_letters))
+
                     else:
                         if wrong_guess == 4:
+                            entered_letters.add(letter)
                             print("-|")
                             print("/ \\\n")
                             print("Try again.\n")
                             print("Correct word:", " ".join(placeholder))
+                            print("Letters already entered: " + str(entered_letters))
+
                         else:
                             if wrong_guess == 5:
+                                entered_letters.add(letter)
                                 print("-|-")
                                 print("/ \\\n")
                                 print("Try again.\n")
                                 print("Correct word:", " ".join(placeholder))
+                                print("Letters already entered: " + str(entered_letters))
+
                             else:
                                 if wrong_guess == 6:
+                                    entered_letters.add(letter)
                                     print(" O")
                                     print("-|-")
                                     print("/ \\")
                                     print("Sorry, you lost. The correct answer was: " + answer)
+                                    print("Letters already entered: " + str(entered_letters))
+
                                     break
 
     while True:
